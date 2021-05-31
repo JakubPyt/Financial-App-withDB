@@ -1,0 +1,105 @@
+<!-- Page based on 'base.html' -->
+{% extends "base.html" %}
+
+<!-- Styles for all forms -->
+<!-- Are attached to 'base.html' -->
+{% block style %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',filename='styles/forms.css') }}"
+/>
+{% endblock %}
+
+<!-- Title -->
+{% block title %} Add withdrawal {% endblock %}
+
+<!-- Content of the page -->
+{% block page_body %}
+
+<div class="form-div">
+  <h1>Add withdrawal</h1>
+
+  <!-- Empty div is used to add vertical line between header(left, code above) and form(right, code below) -->
+  <div class="form-line" style="height: 25rem"></div>
+
+  <!-- This form is used to add a withdrawal -->
+  <!-- Flask code read values by name of input -->
+  <form method="POST">
+    <!-- Add amount -->
+    <!-- Breake into two parts -->
+    <!-- Flask code will connect fields -->
+    <div class="form-group">
+      <label for="amount-dollars">Amount</label>
+      <!-- Input for dollars with $ before -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">$</span>
+        </div>
+        <input
+          min="0"
+          type="number"
+          class="form-control"
+          name="aw-amount-dollars"
+        />
+
+        <!-- Input for cents with ¢ before -->
+        <div class="input-group-prepend">
+          <span class="input-group-text">¢</span>
+        </div>
+        <input
+          min="0"
+          max="100"
+          placeholder="00"
+          type="number"
+          class="form-control"
+          name="aw-amount-cents"
+        />
+      </div>
+    </div>
+
+    <!-- Date selection -->
+    <!-- Today is selected by default -->
+    <div class="form-group">
+      <label for="aw-date">Date</label>
+      <input
+        class="form-control"
+        type="date"
+        value="{{today}}"
+        name="aw-date"
+      />
+    </div>
+
+    <!-- Category selection -->
+    <div class="form-group">
+      <label for="aw-category">Category</label>
+      <select class="form-select" name="aw-category">
+        <option selected>Unsigned</option>
+        <option>Car</option>
+        <option>Food</option>
+        <option>Family</option>
+        <option>Taxes</option>
+      </select>
+    </div>
+
+    <!-- Textarea for description -->
+    <div class="form-group">
+      <label for="aw-description">Description</label>
+      <textarea
+        maxlength="200"
+        class="form-control"
+        name="aw-description"
+      ></textarea>
+    </div>
+
+    <!-- Submit -->
+    <button
+      type="submit"
+      class="btn btn-dark form-submit"
+      href="{{ url_for('add_withdrawal')}}"
+    >
+      Add withdrawal
+    </button>
+  </form>
+</div>
+{% endblock %}

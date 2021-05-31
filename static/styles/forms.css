@@ -1,0 +1,23 @@
+/* Style for forms */
+/* Div with the entire form */
+.form-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+/* Each label + input */
+.form-group{
+    margin: 1rem 0;
+}
+/* Each submit button */
+.form-submit{
+    float: right;
+}
+/* Vertical line */
+/* In some forms it has custom height */
+.form-line{
+    height: 20rem;
+    background-color: black;
+    width: .1rem;
+    margin: 0 3rem;
+}

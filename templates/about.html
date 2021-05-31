@@ -1,0 +1,42 @@
+<!-- Page based on 'base.html' -->
+{% extends "base.html" %}  
+
+<!-- Title of the page -->
+{% block title %} About {% endblock %}
+
+<!-- Page content -->
+{% block page_body %}
+    <div>
+        <!-- About app -->
+        <h1>About project</h1>
+        <!-- Reference to icon source -->
+   
+        <!-- About demo version -->
+        <!-- <h3> Demo version </h3> -->
+        <p>
+            There is two versions of this app. Both look identical(almost) and to build both of this apps I used:
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Bootstrap</li>
+                <li>JavaScript</li>
+                <li>jQuery</li>
+                <li>Flask</li>
+                <li>Python(Pandas, Numpy, Plotly)</li>
+            </ul>
+            <b>The difference between the versions is back-end. </b>
+            <h5>First version</h5>
+            First version based on pandas DataFrame, and is used for demonstration
+            without the need to install the Python virtual environment by the viewer. You find this version and it code
+            at the link:
+
+            <h5>Second version</h5>
+            Second version(which you are currently viewing) is in repo in Github, at link:<br>
+
+            This version based on SQLAlchemy connected to PostgreSQL database. <br>
+        </p>
+        <p><b>You can find more of my projects <a href="https://jakubpyt.github.io/website-about-me/"> here </a>.</b></p>
+        <p>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>    
+     
+    </div>
+{% endblock %}

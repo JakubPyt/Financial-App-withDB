@@ -1,0 +1,81 @@
+<!-- This code determines menu -->
+<!-- To classes added 'active', when name of page is being sent by render_template method and param nav_active inside it -->
+<ul class="nav nav-tabs">
+  
+  <!-- Home -->
+  <li class="nav-item">
+    <a
+      class="nav-link {{'active' if nav_active == 'home'}}"
+      aria-current="page"
+      href="{{ url_for('home') }}"
+      id="nav_home"
+      >Home</a
+    >
+  </li>
+
+  <!-- Add... -->
+  <li class="nav-item dropdown">
+    <a
+      class="nav-link dropdown-toggle {{'active' if nav_active == 'add'}}"
+      data-bs-toggle="dropdown"
+      role="button"
+      aria-expanded="false"
+      id="add"
+      >Add...</a
+    >
+    <!-- Dropdown menu -->
+    <ul class="dropdown-menu">
+      <li>
+        <a class="dropdown-item" href="{{ url_for('add_deposit')}}"
+        >Deposit</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="{{ url_for('add_withdrawal') }}"
+          >Withdrawal</a
+        >
+      </li>
+    </ul>
+  </li>
+
+  <!-- Ledger -->
+  <li class="nav-item">
+    <a
+      class="nav-link {{'active' if nav_active == 'ledger'}}"
+      href="{{ url_for('ledger') }}"
+      id="ledger"
+      >Ledger</a
+    >
+  </li>
+
+  <!-- Analysis -->
+  <li class="nav-item">
+    <a
+      class="nav-link {{'active' if nav_active == 'analysis'}}"
+      href="{{ url_for('analysis') }}"
+      id="analysis"
+      >Analysis</a
+    >
+  </li>
+
+  <li class="nav-item">
+    <a
+      class="nav-link {{'active' if nav_active == 'about'}}"
+      href="{{ url_for('about') }}"
+      id="about"
+      >About project</a
+    >
+  </li>
+
+  <!-- Display current user balance -->
+  <div
+    class="navbar-text"
+    style="
+      position: absolute;
+      display: inline;
+      right: 0;
+      margin-right: 1.5rem;
+      color: rgb(79, 79, 161);
+    "
+  ><span> Your balance: ${{ balance }} </span>
+  </div>
+</ul>

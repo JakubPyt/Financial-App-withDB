@@ -1,0 +1,12 @@
+<!-- Code below display all flash messages -->
+<!-- With "base.html" it is called on all pages -->
+{% macro show_flash() %}
+    <!-- For each message show one alert -->
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <!-- Button below it is close button -->
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+{% endmacro %}

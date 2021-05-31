@@ -1,0 +1,47 @@
+<!-- Page based on 'base.html' -->
+{% extends "base.html" %}
+
+<!-- Title -->
+{% block title %} Analysis {% endblock %}
+
+<!-- Content of the page -->
+{% block page_body %}
+
+    <div>
+        <!-- Always displayed part -->
+        <h1>Analysis</h1>
+        <p>Here you can see some visualisations of your ledger.</p>
+
+        <!-- Line plot of balance -->
+        <!-- Depending on the length of DataFrame with values to display -->
+        {% if len_line <= 0: %}
+            <!-- If ledger is empty, display the inscription that there is nothing to display -->
+            <p> <b>No entries to display the chart.</b> </p>
+        {% elif len_line == 1: %}
+            <!-- If ledger has 1 value, plot will not displayed well -->
+            <!-- So display the inscription that user have to add more entries -->
+            <p> <b>Add more entries to see the chart.</b> </p>
+        {% else: %}
+            <!-- Finally, we can display plot -->
+            <div id="plotly-line"></div>
+            <script type="text/javascript">
+                var line_graph = {{ plot_json_line | safe }};
+                Plotly.plot('plotly-line', line_graph, {});
+            </script>
+        {% endif %}
+        
+        <!-- Pie chart of expenses -->
+        {% if len_pie > 0: %}
+            <!-- If there is more that 1 withdrawal to display chart, display it -->
+            <div id="plotly-pie"></div>
+            <script type="text/javascript">
+                var pie_graph = {{plot_json_pie | safe}};
+                Plotly.plot('plotly-pie', pie_graph, {})
+            </script>
+        {% else: %}
+            <!-- If ledger hasn't withdrawal, display information -->
+            <p> <b>No expenses to display the chart.</b> </p>
+        {% endif %}
+
+    </div>
+{% endblock %}

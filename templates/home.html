@@ -1,0 +1,19 @@
+<!-- Page based on 'base.html' -->
+{% extends "base.html" %}  
+
+<!-- Title of the page -->
+{% block title %} Home {% endblock %}
+
+<!-- Page content -->
+{% block page_body %}
+    <div>
+        <!-- About app -->
+        <h1>Welcome to the financial app!</h1>
+        <p>Do you like urbex exploration? Or maybe mountains? View of the city or lakes?
+            I found the above picture <a href="https://barnimages.com/frame-of-unfinished-building-in-front-of-lake-geneva/">here</a>,
+            but if you manage your finances well you can see these and even better live sights. 
+            Welcome to the financial application! Place to manage your finances!
+        </p>
+        <img src="../static/images/meme.jpg" style="width: 100%;"/>
+    </div>
+{% endblock %}

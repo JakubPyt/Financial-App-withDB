@@ -1,0 +1,14 @@
+/* In div with this id is displayed content of pages  */
+/* In div with this id is not displayed: header, menu, footer */
+#content{
+    margin: 3rem 17rem;
+}
+h1, h3{
+    font-family: 'KoHo', sans-serif;
+    margin: 2rem 0;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0 1rem 0;
+}

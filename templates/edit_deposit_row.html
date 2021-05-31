@@ -1,0 +1,102 @@
+<!-- Page based on 'base.html' -->
+{% extends "base.html" %}
+
+<!-- Styles for all forms -->
+<!-- Are attached to 'base.html' -->
+{% block style %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',filename='styles/forms.css') }}"
+/>
+{% endblock %}
+
+<!-- Title -->
+{% block title %} Edit deposit row {% endblock %}
+
+<!-- Content of the page -->
+{% block page_body %}
+<div class="form-div">
+  <h1>Edit deposit row</h1>
+
+  <!-- Empty div is used to add vertical line between header(left, code above) and form(right, code below) -->
+  <div class="form-line"></div>
+
+  <!-- This form is used to edit a deposit -->
+  <!-- Inputs values based on the values from row which is being edited -->
+  <!-- Flask code read values by name of input -->
+  <form method="POST">
+    <!-- Edit amount -->
+    <!-- Breake into two parts -->
+    <!-- Flask code will connect fields -->
+    <div class="form-group">
+      <label for="edit-amount-dollars">Amount</label>
+      <!-- Input for dollars with $ before -->
+      <!-- Value of this input is only integer part of amount -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">$</span>
+        </div>
+        <input
+          value="{{ row.amount|int }}"
+          min="0"
+          type="number"
+          class="form-control"
+          name="edit-dollars"
+        />
+        <!-- Input for cents with ¢ before -->
+        <!-- Value of this input is only two decimal places -->
+        <!-- Value of the 'value' calculated these decimal places -->
+        <div class="input-group-prepend">
+          <span class="input-group-text">¢</span>
+        </div>
+        <input
+          value="{{ ((row.amount % 1)*100) |round |int }}"
+          min="0"
+          max="100"
+          type="number"
+          class="form-control"
+          name="edit-cents"
+          placeholder="00"
+        />
+      </div>
+    </div>
+
+    <!-- Date selection -->
+    <div class="form-group">
+      <label for="edit-date">Date</label>
+      <input
+        class="form-control"
+        type="date"
+        value="{{row.date}}"
+        name="edit-date"
+      />
+    </div>
+
+    <!-- Textarea for description -->
+    <div class="form-group">
+      <label for="edit-description">Description</label>
+      <textarea 
+        maxlength="200" 
+        class="form-control" 
+        name="edit-description"
+        >{{row.description}}</textarea>
+    </div>
+
+    <!-- Cancel button -->
+    <!-- Undo without making changes  -->
+    <a 
+    href="{{ url_for('ledger')}}" 
+    class="btn btn-secondary"
+    > Cancel </a>
+    
+    <!-- Submit button -->
+    <button
+      type="submit"
+      class="btn btn-dark form-submit"
+      href="{{ url_for('edit_row', id_row_to_edit=row.id)}}"
+    > Edit row
+    </button>
+  </form>
+</div>
+{% endblock %}

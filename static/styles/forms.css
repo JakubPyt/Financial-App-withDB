@@ -15,7 +15,7 @@
 }
 /* Vertical line */
 /* In some forms it has custom height */
-.form-line{
+.form-v-line{
     height: 20rem;
     background-color: black;
     width: .1rem;

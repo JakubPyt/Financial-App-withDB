@@ -1,25 +1,23 @@
 <!-- Page based on 'base.html' -->
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
-<!-- Styles for all forms -->
-<!-- Are attached to 'base.html' -->
+<!-- Styles for all forms are attached to 'base.html' -->
 {% block style %}
 <link
   rel="stylesheet"
   type="text/css"
   href="{{ url_for('static',filename='styles/forms.css') }}"
 />
-{% endblock %} 
+{% endblock %}
 
 <!-- Title -->
-{% block title %} Add deposit {% endblock %} 
+{% block title %} Add deposit {% endblock %}
 
 <!-- Content of the page -->
 {% block page_body%}
-
 <div class="form-div">
   <h1>Add deposit</h1>
-  
+
   <!-- Empty div is used to add vertical line between header(left, code above) and form(right, code below) -->
   <div class="form-v-line"></div>
 
@@ -27,7 +25,7 @@
   <!-- Flask code read values by name of input -->
   <form method="POST">
     <!-- Add amount -->
-    <!-- Breake into two parts -->
+    <!-- Break into two parts -->
     <!-- Flask code will connect fields -->
     <div class="form-group">
       <label for="ad-amount-dollars">Amount</label>

@@ -10,7 +10,7 @@
 <!-- This modal displayed only when user try to delete row -->
 <!-- When user click delete in table(below), jQuery code -->
 <!-- Get values from row and display it in this modal -->
-<!-- Is user accept to delete row in modal -->
+<!-- If user accept to delete row in modal -->
 <!-- Ledger with id_row is called, which delete row(app.py) -->
 <div class="modal fade" tabindex="-1" aria-hidden="true" id="deleteModal">
   <div class="modal-dialog">
@@ -39,8 +39,8 @@
   </div>
 </div>
 
-<!-- jQuery get values and text from data-modal-question -->
-<!-- And set it into modal -->
+<!-- jQuery get values and text from data-modal-question(delete button in table below)  -->
+<!-- And set it into modal(above)  -->
 <script>
   $(document).ready(function(){
     $('.delete-confirm').click(function(){

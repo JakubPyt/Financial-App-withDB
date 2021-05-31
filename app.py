@@ -26,11 +26,12 @@ class Ledger(db.Model):
     amount = db.Column(db.Float(precision=2))  # The amount of the operation
     date = db.Column(db.Date)  # The date of the operation
     description = db.Column(db.String(200))  # The description of the operation
-    category = db.Column(db.String(50))  # The category of the operation - 'deposit' for each deposit, and custom for others
+    category = db.Column(db.String(50))  # The category of the operation - 'Deposit' for each deposit, and custom for others
 
 def get_current_date():
     """
     Function return current date as datetime.
+    :return: datetime in format YYYY-MM-DD
     """
     today = date.today()
     today = today.strftime("%Y-%m-%d")
@@ -39,6 +40,7 @@ def get_current_date():
 def get_balance():
     """
     Function return current user balance.
+    :return: string looks like float with two decimal places
     """
     if len(Ledger.query.all()) == 0:
         # This part is responsible for return 0 with two decimal places
@@ -70,6 +72,7 @@ def add_deposit():
                                 nav_active='add',  # Highlighted tab in menu
                                 balance=get_balance(),  # Menu keeps showing users balance
                                 today=get_current_date())  # Current date is set in form in input date
+    
     # If method is POST, get values from form and save it in table
     else:
         # Default value of dollars - when user doesn't type value 
@@ -111,7 +114,7 @@ def add_deposit():
         added_row = Ledger(amount=amount, 
                             description=desc,
                             date=date, 
-                            category='Deposit') # This category is defaul for each deposit
+                            category='Deposit') # This category is default for each deposit
         # Add row above to database
         db.session.add(added_row)
         db.session.commit()
@@ -377,7 +380,10 @@ def analysis():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', nav_active='about', balance=get_balance())
+    # This page show information about project
+    return render_template('about.html', 
+        nav_active='about', # Highlighted tab in menu
+        balance=get_balance()) # Menu keeps showing users balance
 
 if __name__ == '__main__':
     app.run()
